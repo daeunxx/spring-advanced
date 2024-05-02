@@ -2,14 +2,14 @@ package org.example.springadvanced.app.v1;
 
 import lombok.RequiredArgsConstructor;
 import org.example.springadvanced.trace.TraceStatus;
-import org.example.springadvanced.trace.tracer.TracerV1;
+import org.example.springadvanced.trace.mocktrace.MockTraceV1;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
 public class OrderRepositoryV1 {
 
-  private final TracerV1 tracer;
+  private final MockTraceV1 tracer;
 
   public void save(String itemId) {
 

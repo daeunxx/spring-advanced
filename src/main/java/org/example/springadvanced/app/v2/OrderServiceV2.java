@@ -3,7 +3,7 @@ package org.example.springadvanced.app.v2;
 import lombok.RequiredArgsConstructor;
 import org.example.springadvanced.trace.TraceId;
 import org.example.springadvanced.trace.TraceStatus;
-import org.example.springadvanced.trace.tracer.TracerV2;
+import org.example.springadvanced.trace.mocktrace.MockTraceV2;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class OrderServiceV2 {
 
   private final OrderRepositoryV2 orderRepository;
-  private final TracerV2 tracer;
+  private final MockTraceV2 tracer;
 
   public void orderItem(TraceId traceId, String itemId) {
 

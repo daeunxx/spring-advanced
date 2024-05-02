@@ -1,4 +1,4 @@
-package org.example.springadvanced.trace.tracer;
+package org.example.springadvanced.trace.mocktrace;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.springadvanced.trace.TraceId;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class TracerV2 {
+public class MockTraceV1 {
 
   private static final String START_PREFIX = "-->";
   private static final String COMPLETE_PREFIX = "<--";
@@ -20,15 +20,6 @@ public class TracerV2 {
     //로그 출력
     log.info("[{}] {}{}", traceId.getId(), addSpace(START_PREFIX, traceId.getLevel()), message);
     return new TraceStatus(traceId, startTimeMs, message);
-  }
-
-  public TraceStatus beginSync(TraceId beforeTraceId, String message) {
-    TraceId nextTraceId = beforeTraceId.createNextId();
-    Long startTimeMs = System.currentTimeMillis();
-
-    //로그 출력
-    log.info("[{}] {}{}", nextTraceId.getId(), addSpace(START_PREFIX, nextTraceId.getLevel()), message);
-    return new TraceStatus(nextTraceId, startTimeMs, message);
   }
 
   public void end(TraceStatus traceStatus) {

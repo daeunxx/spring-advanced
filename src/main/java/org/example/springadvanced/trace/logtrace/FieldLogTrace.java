@@ -1,20 +1,24 @@
-package org.example.springadvanced.trace.tracer;
+package org.example.springadvanced.trace.logtrace;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.springadvanced.trace.TraceId;
 import org.example.springadvanced.trace.TraceStatus;
-import org.springframework.stereotype.Component;
 
 @Slf4j
-@Component
-public class TracerV1 {
+public class FieldLogTrace implements LogTrace {
 
   private static final String START_PREFIX = "-->";
   private static final String COMPLETE_PREFIX = "<--";
   private static final String EX_PREFIX = "<X-";
 
+  private TraceId traceIdHolder;  //traceId 동기화, 동시성 이슈 발생
+
+  @Override
   public TraceStatus begin(String message) {
-    TraceId traceId = new TraceId();
+
+    syncTraceId();
+    
+    TraceId traceId = traceIdHolder;
     Long startTimeMs = System.currentTimeMillis();
 
     //로그 출력
@@ -22,10 +26,20 @@ public class TracerV1 {
     return new TraceStatus(traceId, startTimeMs, message);
   }
 
+  private void syncTraceId() {
+    if (traceIdHolder == null) {
+      traceIdHolder = new TraceId();
+    } else {
+      traceIdHolder = traceIdHolder.createNextId();
+    }
+  }
+
+  @Override
   public void end(TraceStatus traceStatus) {
     complete(traceStatus, null);
   }
 
+  @Override
   public void exception(TraceStatus traceStatus, Exception e) {
     complete(traceStatus, e);
   }
@@ -38,14 +52,21 @@ public class TracerV1 {
           addSpace(COMPLETE_PREFIX, traceId.getLevel()), traceStatus.getMessage(), resultTimeMs);
     } else {
       log.info("[{}] {}{} time={}ms ex={}", traceId.getId(),
-          addSpace(EX_PREFIX, traceId.getLevel()), traceStatus.getMessage(), resultTimeMs, e.toString());
+          addSpace(EX_PREFIX, traceId.getLevel()), traceStatus.getMessage(), resultTimeMs,
+          e.toString());
+    }
+
+    releaseTraceId();
+  }
+
+  private void releaseTraceId() {
+    if (traceIdHolder.isFirstLevel()) {
+      traceIdHolder = null;
+    } else {
+      traceIdHolder = traceIdHolder.creatPreviousId();
     }
   }
 
-  //level=0
-  //level=1     |-->
-  //level=2     |   |--->
-  //level=2 ex  |   |<X-
   private static String addSpace(String prefix, int level) {
     StringBuilder stringBuilder = new StringBuilder();
     for (int i = 0; i < level; i++) {

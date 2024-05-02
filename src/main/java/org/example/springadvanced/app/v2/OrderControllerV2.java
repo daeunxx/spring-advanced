@@ -2,8 +2,7 @@ package org.example.springadvanced.app.v2;
 
 import lombok.RequiredArgsConstructor;
 import org.example.springadvanced.trace.TraceStatus;
-import org.example.springadvanced.trace.tracer.TracerV1;
-import org.example.springadvanced.trace.tracer.TracerV2;
+import org.example.springadvanced.trace.mocktrace.MockTraceV2;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderControllerV2 {
 
   private final OrderServiceV2 orderService;
-  private final TracerV2 tracer;
+  private final MockTraceV2 tracer;
 
   @GetMapping("/v2/request")
   public String request(String itemId) {
