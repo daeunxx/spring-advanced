@@ -36,7 +36,7 @@ public class OrderRepositoryV3 {
     try {
       Thread.sleep(millis);
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      throw new RuntimeException(e);
     }
   }
 }
