@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-//스프링은 @Controller 또는 @RequestMapping 이 있으면 컨트롤러로 인식
+//스프링은 @Controller 또는 @RestController 가 있으면 컨트롤러로 인식
 @RestController
 public interface OrderControllerV1 {
 
