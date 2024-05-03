@@ -2,6 +2,7 @@ package org.example.springadvanced.trace.strategy;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.springadvanced.trace.strategy.code.ContextV1;
+import org.example.springadvanced.trace.strategy.code.Strategy;
 import org.example.springadvanced.trace.strategy.code.StrategyLogic1;
 import org.example.springadvanced.trace.strategy.code.StrategyLogic2;
 import org.junit.jupiter.api.Test;
@@ -48,5 +49,58 @@ public class ContextV1Test {
     context2.execute();
   }
 
+  @Test
+  void strategyV2() {
+    Strategy logic1 = new Strategy() {
+      @Override
+      public void call() {
+        log.info("비즈니스 로직1 실행");
+      }
+    };
 
+    log.info("logic1.getClass={}", logic1.getClass());
+    ContextV1 context1 = new ContextV1(logic1);
+    context1.execute();
+
+    Strategy logic2 = new Strategy() {
+      @Override
+      public void call() {
+        log.info("비즈니스 로직1 실행");
+      }
+    };
+
+    log.info("logic2.getClass={}", logic2.getClass());
+    ContextV1 context2 = new ContextV1(logic2);
+    context2.execute();
+  }
+
+  @Test
+  void strategyV3() {
+
+    ContextV1 context1 = new ContextV1(new Strategy() {
+      @Override
+      public void call() {
+        log.info("비즈니스 로직1 실행");
+      }
+    });
+    context1.execute();
+
+    ContextV1 context2 = new ContextV1(new Strategy() {
+      @Override
+      public void call() {
+        log.info("비즈니스 로직1 실행");
+      }
+    });
+    context2.execute();
+  }
+
+  @Test
+  void strategyV4() {
+
+    ContextV1 context1 = new ContextV1(() -> log.info("비즈니스 로직1 실행"));
+    context1.execute();
+
+    ContextV1 context2 = new ContextV1(() -> log.info("비즈니스 로직1 실행"));
+    context2.execute();
+  }
 }
