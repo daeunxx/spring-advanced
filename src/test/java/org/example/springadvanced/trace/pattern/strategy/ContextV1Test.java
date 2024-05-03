@@ -1,10 +1,10 @@
-package org.example.springadvanced.trace.strategy;
+package org.example.springadvanced.trace.pattern.strategy;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.springadvanced.trace.strategy.code.ContextV1;
-import org.example.springadvanced.trace.strategy.code.Strategy;
-import org.example.springadvanced.trace.strategy.code.StrategyLogic1;
-import org.example.springadvanced.trace.strategy.code.StrategyLogic2;
+import org.example.springadvanced.trace.pattern.strategy.code.strategy.ContextV1;
+import org.example.springadvanced.trace.pattern.strategy.code.strategy.Strategy;
+import org.example.springadvanced.trace.pattern.strategy.code.strategy.StrategyLogic1;
+import org.example.springadvanced.trace.pattern.strategy.code.strategy.StrategyLogic2;
 import org.junit.jupiter.api.Test;
 
 @Slf4j

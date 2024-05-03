@@ -1,9 +1,9 @@
-package org.example.springadvanced.trace.template;
+package org.example.springadvanced.trace.pattern.template;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.springadvanced.trace.template.code.AbstractTemplate;
-import org.example.springadvanced.trace.template.code.SubClassLogic1;
-import org.example.springadvanced.trace.template.code.SubClassLogic2;
+import org.example.springadvanced.trace.pattern.template.code.AbstractTemplate;
+import org.example.springadvanced.trace.pattern.template.code.SubClassLogic1;
+import org.example.springadvanced.trace.pattern.template.code.SubClassLogic2;
 import org.junit.jupiter.api.Test;
 
 @Slf4j

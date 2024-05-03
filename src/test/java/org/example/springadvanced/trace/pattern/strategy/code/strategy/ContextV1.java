@@ -1,16 +1,18 @@
-package org.example.springadvanced.trace.strategy.code;
+package org.example.springadvanced.trace.pattern.strategy.code.strategy;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 파라미터로 전략을 보관하는 방식
+ * 필드에 전략을 보관하는 방식
  */
 @Slf4j
 @AllArgsConstructor
-public class ContextV2 {
+public class ContextV1 {
 
-  public void execute(Strategy strategy) {
+  private Strategy strategy;
+
+  public void execute() {
     long startTime = System.currentTimeMillis();
 
     //비즈니스 로직 실행

@@ -1,4 +1,4 @@
-package org.example.springadvanced.trace.template.code;
+package org.example.springadvanced.trace.pattern.template.code;
 
 import lombok.extern.slf4j.Slf4j;
 
