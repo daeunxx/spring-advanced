@@ -5,6 +5,7 @@ import example.proxy.config.AppV2Config;
 import example.proxy.config.v1_proxy.ConcreteProxyConfig;
 import example.proxy.config.v1_proxy.InterfaceProxyConfig;
 import example.proxy.config.v2_dynamic_proxy.DynamicProxyBasicConfig;
+import example.proxy.config.v2_dynamic_proxy.DynamicProxyFilterConfig;
 import example.proxy.trace.logtrace.LogTrace;
 import example.proxy.trace.logtrace.ThreadLocalLogTrace;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Import;
 //@Import({AppV1Config.class, AppV2Config.class})
 //@Import({InterfaceProxyConfig.class, ConcreteProxyConfig.class})
 @Import({DynamicProxyBasicConfig.class})
+//@Import({DynamicProxyFilterConfig.class})
 @SpringBootApplication(scanBasePackages = "example.proxy.app.v3") //주의
 public class ProxyApplication {
 
