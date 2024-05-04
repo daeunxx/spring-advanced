@@ -1,6 +1,6 @@
 package example.proxy;
 
-import example.proxy.config.v4_postprocessor.postprocessor.BeanPostProcessorConfig;
+import example.proxy.config.v5_autoproxy.AutoProxyConfig;
 import example.proxy.trace.logtrace.LogTrace;
 import example.proxy.trace.logtrace.ThreadLocalLogTrace;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +13,8 @@ import org.springframework.context.annotation.Import;
 //@Import({DynamicProxyBasicConfig.class})
 //@Import({DynamicProxyFilterConfig.class})
 //@Import({ProxyFactoryConfigV1.class, ProxyFactoryConfigV2.class})
-@Import({BeanPostProcessorConfig.class})
+//@Import({BeanPostProcessorConfig.class})
+@Import({AutoProxyConfig.class})
 @SpringBootApplication(scanBasePackages = "example.proxy.app.v3") //주의
 public class ProxyApplication {
 
