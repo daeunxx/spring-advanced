@@ -1,6 +1,7 @@
 package example.proxy;
 
 import example.proxy.config.v3_proxyfactory.ProxyFactoryConfigV1;
+import example.proxy.config.v3_proxyfactory.ProxyFactoryConfigV2;
 import example.proxy.trace.logtrace.LogTrace;
 import example.proxy.trace.logtrace.ThreadLocalLogTrace;
 import org.springframework.boot.SpringApplication;
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.Import;
 //@Import({InterfaceProxyConfig.class, ConcreteProxyConfig.class})
 //@Import({DynamicProxyBasicConfig.class})
 //@Import({DynamicProxyFilterConfig.class})
-@Import({ProxyFactoryConfigV1.class})
+@Import({ProxyFactoryConfigV1.class, ProxyFactoryConfigV2.class})
 @SpringBootApplication(scanBasePackages = "example.proxy.app.v3") //주의
 public class ProxyApplication {
 
