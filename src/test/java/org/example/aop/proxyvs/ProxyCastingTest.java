@@ -24,4 +24,18 @@ public class ProxyCastingTest {
         }
     );
   }
+
+  @Test
+  void cglibProxy() {
+    MemberServiceImpl target = new MemberServiceImpl();
+    ProxyFactory proxyFactory = new ProxyFactory(target);
+    proxyFactory.setProxyTargetClass(true); //CGLIB 프록시
+
+    //CGLIB 프록시 인터페이스로 캐스팅 가능
+    MemberService memberServiceProxy = (MemberService) proxyFactory.getProxy();
+    log.info("proxy class={}", memberServiceProxy.getClass());
+
+    //인터페이스로 캐스팅된 CGLIB 프록시 구현 클래스로 캐스팅 가능
+    MemberServiceImpl castingMemberService = (MemberServiceImpl) memberServiceProxy;
+  }
 }
