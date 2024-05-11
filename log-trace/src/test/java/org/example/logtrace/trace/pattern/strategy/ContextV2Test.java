@@ -21,7 +21,7 @@ public class ContextV2Test {
   }
 
   /**
-   * 전략 패턴 익명 내부 클래스
+   * 전략 패턴 - 익명 내부 클래스
    */
   @Test
   void strategyV2() {
@@ -41,7 +41,7 @@ public class ContextV2Test {
   }
 
   /**
-   * 전략 패턴 익명 내부 클래스 -> 람다 사용
+   * 전략 패턴 - 익명 내부 클래스 -> 람다 사용
    */
   @Test
   void strategyV3() {

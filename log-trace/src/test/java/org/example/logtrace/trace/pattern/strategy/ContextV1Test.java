@@ -38,6 +38,9 @@ public class ContextV1Test {
     log.info("resultTime={}", resultTime);
   }
 
+  /**
+   * 전략 패턴 적용
+   */
   @Test
   void strategyV1() {
     StrategyLogic1 logic1 = new StrategyLogic1();
@@ -49,6 +52,9 @@ public class ContextV1Test {
     context2.execute();
   }
 
+  /**
+   * 전략 패턴 - 익명 내부 클래스 -> 전략 변수 사용
+   */
   @Test
   void strategyV2() {
     Strategy logic1 = new Strategy() {
@@ -65,7 +71,7 @@ public class ContextV1Test {
     Strategy logic2 = new Strategy() {
       @Override
       public void call() {
-        log.info("비즈니스 로직1 실행");
+        log.info("비즈니스 로직2 실행");
       }
     };
 
@@ -74,6 +80,9 @@ public class ContextV1Test {
     context2.execute();
   }
 
+  /**
+   * 전략 패턴 - 익명 내부 클래스 -> 바로 생성
+   */
   @Test
   void strategyV3() {
 
@@ -88,19 +97,22 @@ public class ContextV1Test {
     ContextV1 context2 = new ContextV1(new Strategy() {
       @Override
       public void call() {
-        log.info("비즈니스 로직1 실행");
+        log.info("비즈니스 로직2 실행");
       }
     });
     context2.execute();
   }
 
+  /**
+   * 전략 패턴 - 익명 내부 클래스 -> 람다 사용
+   */
   @Test
   void strategyV4() {
 
     ContextV1 context1 = new ContextV1(() -> log.info("비즈니스 로직1 실행"));
     context1.execute();
 
-    ContextV1 context2 = new ContextV1(() -> log.info("비즈니스 로직1 실행"));
+    ContextV1 context2 = new ContextV1(() -> log.info("비즈니스 로직2 실행"));
     context2.execute();
   }
 }

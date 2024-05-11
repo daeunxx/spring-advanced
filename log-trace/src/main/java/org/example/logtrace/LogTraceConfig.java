@@ -1,5 +1,6 @@
 package org.example.logtrace;
 
+import org.example.logtrace.trace.logtrace.FieldLogTrace;
 import org.example.logtrace.trace.logtrace.LogTrace;
 import org.example.logtrace.trace.logtrace.ThreadLocalLogTrace;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,7 @@ public class LogTraceConfig {
 
   @Bean
   public LogTrace logTrace() {
+//    return new FieldLogTrace();
     return new ThreadLocalLogTrace();
   }
 }
