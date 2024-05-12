@@ -22,8 +22,7 @@ public class AdvisorTest {
     ServiceInterface target = new ServiceImpl();
 
     ProxyFactory proxyFactory = new ProxyFactory(target);
-    DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor(Pointcut.TRUE,
-        new TimeAdvice());
+    DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor(Pointcut.TRUE, new TimeAdvice());
     proxyFactory.addAdvisor(advisor);
 
     ServiceInterface proxy = (ServiceInterface) proxyFactory.getProxy();
@@ -37,8 +36,7 @@ public class AdvisorTest {
     ServiceInterface target = new ServiceImpl();
 
     ProxyFactory proxyFactory = new ProxyFactory(target);
-    DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor(new MyPointcut(),
-        new TimeAdvice());
+    DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor(new MyPointcut(), new TimeAdvice());
     proxyFactory.addAdvisor(advisor);
 
     ServiceInterface proxy = (ServiceInterface) proxyFactory.getProxy();
