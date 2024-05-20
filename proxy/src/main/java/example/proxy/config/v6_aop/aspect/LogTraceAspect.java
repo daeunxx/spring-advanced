@@ -15,7 +15,7 @@ public class LogTraceAspect {
 
   private final LogTrace trace;
 
-  @Around("execution(* example.proxy.app..*(..))")
+  @Around("execution(* example.proxy.app..*(..)) && !execution(* example.proxy.app..noLog(..))")
   public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
     TraceStatus status = null;
     try {
