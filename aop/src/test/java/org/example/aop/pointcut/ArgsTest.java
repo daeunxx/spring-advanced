@@ -11,6 +11,7 @@ import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 public class ArgsTest {
 
   Method helloMethod;
+  AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
 
   @BeforeEach
   public void init() throws NoSuchMethodException {
@@ -21,6 +22,12 @@ public class ArgsTest {
     AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
     pointcut.setExpression(expression);
     return pointcut;
+  }
+
+  @Test
+  void argsBasic() {
+    pointcut.setExpression("args(String)");
+    assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
   }
 
   @Test
@@ -43,6 +50,7 @@ public class ArgsTest {
    * execution(* *(java.io.Serializable)): 메서드의 시그니처로 판단(정적)
    * args(java.io.Serializable): 런타임에 전달된 인수로 판단(동적)
    */
+  @Test
   void argsVsExecution() {
     //args
     assertThat(pointcut("args(String)")
@@ -55,7 +63,7 @@ public class ArgsTest {
     //execution
     assertThat(pointcut("execution(* *(String))")
         .matches(helloMethod, MemberServiceImpl.class)).isTrue();
-    assertThat(pointcut("execution(* *(java.io.Serializable)")
+    assertThat(pointcut("execution(* *(java.io.Serializable))")
         .matches(helloMethod, MemberServiceImpl.class)).isFalse();
     assertThat(pointcut("execution(* *(Object))")
         .matches(helloMethod, MemberServiceImpl.class)).isFalse();

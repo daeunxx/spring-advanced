@@ -17,6 +17,7 @@ public class ProxyCastingTest {
     proxyFactory.setProxyTargetClass(false); //JDK 동적 프록시(생략 가능: default JDK 동적 프록시)
 
     MemberService memberServiceProxy = (MemberService) proxyFactory.getProxy();
+    log.info("proxy Class={}", memberServiceProxy.getClass());
 
     //JDK 동적 프록시는 구현 클래스로 캐스팅 불가(ClassCastException)
     Assertions.assertThrows(ClassCastException.class, () -> {

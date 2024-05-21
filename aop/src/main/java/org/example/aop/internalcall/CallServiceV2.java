@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 /**
+ * 생성자 주입
  * ObjectProvider, ApplicationContext를 사용하여 지연(LAZY) 조회
  */
 @Slf4j
