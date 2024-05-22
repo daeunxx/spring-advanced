@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Import;
 @Slf4j
 @Import(AtAnnotationTest.AtAnnotationAspect.class)
 @SpringBootTest
+//@SpringBootTest("spring.aop.proxy-target-class=false")
 public class AtAnnotationTest {
 
   @Autowired
@@ -35,3 +36,4 @@ public class AtAnnotationTest {
     }
   }
 }
+
