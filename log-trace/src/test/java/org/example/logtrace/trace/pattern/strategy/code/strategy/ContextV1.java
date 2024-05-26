@@ -1,16 +1,17 @@
 package org.example.logtrace.trace.pattern.strategy.code.strategy;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * 필드에 전략을 보관하는 방식
  */
 @Slf4j
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ContextV1 {
 
-  private Strategy strategy;
+  private final Strategy strategy;
 
   public void execute() {
     long startTime = System.currentTimeMillis();
