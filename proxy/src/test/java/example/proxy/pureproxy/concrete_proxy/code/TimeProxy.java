@@ -16,6 +16,7 @@ public class TimeProxy extends ConcreteLogic {
 
     String result = logic.operation();
     log.info("TimeDecorator 종료 resultTime={}ms", System.currentTimeMillis() - startTime);
+
     return result;
   }
 }
