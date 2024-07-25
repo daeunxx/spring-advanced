@@ -22,6 +22,7 @@ public class MockTraceV2 {
     return new TraceStatus(traceId, startTimeMs, message);
   }
 
+  //V2에서 추가
   public TraceStatus beginSync(TraceId beforeTraceId, String message) {
     TraceId nextTraceId = beforeTraceId.createNextId();
     Long startTimeMs = System.currentTimeMillis();
