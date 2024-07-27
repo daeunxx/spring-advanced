@@ -78,7 +78,6 @@ public class AdvisorTest {
   static class MyMethodMatcher implements MethodMatcher {
 
     private String matchName = "save";
-    ;
 
     @Override
     public boolean matches(Method method, Class<?> targetClass) {
@@ -95,7 +94,7 @@ public class AdvisorTest {
 
     @Override
     public boolean matches(Method method, Class<?> targetClass, Object... args) {
-      return false;
+      throw new UnsupportedOperationException();
     }
   }
 }
