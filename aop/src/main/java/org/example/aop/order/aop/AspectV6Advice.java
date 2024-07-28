@@ -45,7 +45,7 @@ public class AspectV6Advice {
   }
 
   @AfterReturning(value = "org.example.aop.order.aop.Pointcuts.allOrder()", returning = "result")
-  public void doReturn2(JoinPoint joinPoint, Integer result) {
+  public void doReturn2(JoinPoint joinPoint, String result) {
     log.info("[return2] {} return={}", joinPoint.getSignature(), result);
   }
 
