@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.example.aop.member.MemberService;
+import org.example.aop.member.MemberServiceImpl;
 import org.example.aop.member.annotation.ClassAop;
 import org.example.aop.member.annotation.MethodAop;
 import org.junit.jupiter.api.Test;
@@ -59,14 +60,26 @@ public class ParameterTest {
 
     //this는 프록시 호출
     @Before("allMember() && this(obj)")
-    public void thisArgs(JoinPoint joinPoint, MemberService obj) {
-      log.info("[this]{} obj={}", joinPoint.getSignature(), obj.getClass());
+    public void thisArgs1(JoinPoint joinPoint, MemberService obj) {
+      log.info("[this1]{} obj={}", joinPoint.getSignature(), obj.getClass());
+    }
+
+    //jdk 동적 프록시가 생성되면 호출
+    //CGLIB 프록시가 생성되면 호출X
+    @Before("allMember() && this(obj)")
+    public void thisArgs2(JoinPoint joinPoint, MemberServiceImpl obj) {
+      log.info("[this2]{} obj={}", joinPoint.getSignature(), obj.getClass());
     }
 
     //target은 실제 객체 호출
     @Before("allMember() && target(obj)")
-    public void targetArgs(JoinPoint joinPoint, MemberService obj) {
-      log.info("[target]{}, obj={}", joinPoint.getSignature(), obj.getClass());
+    public void targetArgs1(JoinPoint joinPoint, MemberService obj) {
+      log.info("[target1]{}, obj={}", joinPoint.getSignature(), obj.getClass());
+    }
+
+    @Before("allMember() && target(obj)")
+    public void targetArgs2(JoinPoint joinPoint, MemberServiceImpl obj) {
+      log.info("[target2]{}, obj={}", joinPoint.getSignature(), obj.getClass());
     }
 
     @Before("allMember() && @target(annotation)")
