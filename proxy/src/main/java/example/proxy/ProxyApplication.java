@@ -19,13 +19,13 @@ import org.springframework.context.annotation.Import;
 @SpringBootApplication(scanBasePackages = "example.proxy.app.v3") //주의
 public class ProxyApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ProxyApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(ProxyApplication.class, args);
+  }
 
-	@Bean
-	public LogTrace logTrace() {
-		return new ThreadLocalLogTrace();
-	}
+  @Bean
+  public LogTrace logTrace() {
+    return new ThreadLocalLogTrace();
+  }
 
 }

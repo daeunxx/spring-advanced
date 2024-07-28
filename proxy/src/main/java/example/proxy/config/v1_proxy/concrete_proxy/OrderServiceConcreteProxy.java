@@ -1,6 +1,5 @@
 package example.proxy.config.v1_proxy.concrete_proxy;
 
-import example.proxy.app.v2.OrderRepositoryV2;
 import example.proxy.app.v2.OrderServiceV2;
 import example.proxy.trace.TraceStatus;
 import example.proxy.trace.logtrace.LogTrace;

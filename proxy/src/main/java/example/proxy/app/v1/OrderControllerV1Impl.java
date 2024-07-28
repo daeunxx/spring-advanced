@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
-public class OrderControllerV1Impl implements OrderControllerV1{
+public class OrderControllerV1Impl implements OrderControllerV1 {
 
   private final OrderServiceV1 orderService;
 

@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Import;
 @Import({AppV1Config.class, AppV2Config.class})
 public class AutoProxyConfig {
 
-  //  @Bean
+//    @Bean
   public Advisor advisor1(LogTrace trace) {
     //Pointcut
     NameMatchMethodPointcut pointcut = new NameMatchMethodPointcut();

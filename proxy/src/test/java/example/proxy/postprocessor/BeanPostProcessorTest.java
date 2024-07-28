@@ -33,7 +33,7 @@ public class BeanPostProcessorTest {
     public A a() {
       return new A();
     }
-    
+
     @Bean
     public AToBPostProcessor postProcessor() {
       return new AToBPostProcessor();
@@ -63,7 +63,7 @@ public class BeanPostProcessorTest {
     public Object postProcessAfterInitialization(Object bean, String beanName)
         throws BeansException {
       log.info("beanName={}, bean={}", beanName, bean);
-      
+
       if (bean instanceof A) {
         return new B();
       }
