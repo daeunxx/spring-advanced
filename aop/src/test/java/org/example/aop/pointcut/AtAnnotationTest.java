@@ -1,7 +1,7 @@
 package org.example.aop.pointcut;
 
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.example.aop.member.MemberService;
@@ -30,9 +30,8 @@ public class AtAnnotationTest {
   static class AtAnnotationAspect {
 
     @Around("@annotation(org.example.aop.member.annotation.MethodAop)")
-    public Object doAtAnnotation(ProceedingJoinPoint joinPoint) throws Throwable {
+    public void doAtAnnotation(JoinPoint joinPoint) throws Throwable {
       log.info("[@annotation] {}", joinPoint.getSignature());
-      return joinPoint.proceed();
     }
   }
 }
