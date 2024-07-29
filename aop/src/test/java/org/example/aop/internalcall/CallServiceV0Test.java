@@ -1,7 +1,5 @@
 package org.example.aop.internalcall;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import lombok.extern.slf4j.Slf4j;
 import org.example.aop.internalcall.aop.CallLogAspect;
 import org.junit.jupiter.api.Test;
