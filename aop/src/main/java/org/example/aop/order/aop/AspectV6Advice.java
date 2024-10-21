@@ -37,8 +37,10 @@ public class AspectV6Advice {
   @Before("org.example.aop.order.aop.Pointcuts.orderAndService()")
   public void doBefore(JoinPoint joinPoint) {
     log.info("[before] {}", joinPoint.getSignature());
+    log.info("[before args] {} {}", joinPoint.getSignature(), joinPoint.getArgs());
   }
 
+  // returning 에 지정한 변수명과 매개변수명이 동일해야함
   @AfterReturning(value = "org.example.aop.order.aop.Pointcuts.orderAndService()", returning = "result")
   public void doReturn(JoinPoint joinPoint, Object result) {
     log.info("[return] {} return={}", joinPoint.getSignature(), result);

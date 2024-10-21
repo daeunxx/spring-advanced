@@ -25,6 +25,7 @@ public class AspectV5Order {
   @Order(1)
   public static class TxAspect {
 
+    // @Around 는 항상 jointPoint.proceed() 를 통해 타겟 코드를 호출해야함
     @Around("org.example.aop.order.aop.Pointcuts.orderAndService()")
     public Object doTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
 
