@@ -11,7 +11,7 @@ import org.example.aop.exam.annotation.Retry;
 public class RetryAspect {
 
   @Around("@annotation(retry)")
-  public Object doRetry(ProceedingJoinPoint joinPoint, Retry retry) throws Throwable{
+  public Object doRetry(ProceedingJoinPoint joinPoint, Retry retry) throws Throwable {
     log.info("[retry] {}, args={}", joinPoint.getSignature(), retry);
 
     int maxRetry = retry.value();

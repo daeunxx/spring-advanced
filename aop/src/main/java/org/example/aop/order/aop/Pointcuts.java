@@ -9,8 +9,10 @@ public class Pointcuts {
   }
 
   @Pointcut("execution(* *..*Service.*(..))")
-  public void allService() {}
+  public void allService() {
+  }
 
   @Pointcut("allOrder() && allService()")
-  public void orderAndService() {}
+  public void orderAndService() {
+  }
 }

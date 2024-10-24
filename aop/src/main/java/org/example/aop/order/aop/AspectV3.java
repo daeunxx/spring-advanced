@@ -11,11 +11,13 @@ import org.aspectj.lang.annotation.Pointcut;
 public class AspectV3 {
 
   @Pointcut("execution(* org.example.aop.order..*(..))")
-  private void allOrder(){}
+  private void allOrder() {
+  }
 
   //클래스 이름 패턴이 *Service 포인트컷 지정
   @Pointcut("execution(* *..*Service.*(..))")
-  private void allService(){}
+  private void allService() {
+  }
 
   @Around("allOrder()")
   public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable {

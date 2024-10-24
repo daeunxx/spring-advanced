@@ -46,12 +46,14 @@ public class AtTargetWithinTest {
   }
 
   static class Parent {
+
     public void parentMethod() {
     }
   }
 
   @ClassAop
   static class Child extends Parent {
+
     public void childMethod() {
     }
   }

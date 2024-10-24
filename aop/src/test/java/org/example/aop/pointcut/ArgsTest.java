@@ -48,13 +48,17 @@ public class ArgsTest {
   void argsVsExecution() {
     //args
     assertThat(pointcut("args(String)").matches(helloMethod, MemberServiceImpl.class)).isTrue();
-    assertThat(pointcut("args(java.io.Serializable)").matches(helloMethod, MemberServiceImpl.class)).isTrue();
+    assertThat(pointcut("args(java.io.Serializable)").matches(helloMethod,
+        MemberServiceImpl.class)).isTrue();
     assertThat(pointcut("args(Object)").matches(helloMethod, MemberServiceImpl.class)).isTrue();
 
     //execution
-    assertThat(pointcut("execution(* *(String))").matches(helloMethod, MemberServiceImpl.class)).isTrue();
-    assertThat(pointcut("execution(* *(java.io.Serializable))").matches(helloMethod, MemberServiceImpl.class)).isFalse();
-    assertThat(pointcut("execution(* *(Object))").matches(helloMethod, MemberServiceImpl.class)).isFalse();
+    assertThat(
+        pointcut("execution(* *(String))").matches(helloMethod, MemberServiceImpl.class)).isTrue();
+    assertThat(pointcut("execution(* *(java.io.Serializable))").matches(helloMethod,
+        MemberServiceImpl.class)).isFalse();
+    assertThat(
+        pointcut("execution(* *(Object))").matches(helloMethod, MemberServiceImpl.class)).isFalse();
   }
 
 }

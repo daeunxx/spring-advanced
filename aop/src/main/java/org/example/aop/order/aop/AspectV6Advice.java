@@ -14,7 +14,7 @@ import org.aspectj.lang.annotation.Before;
 @Aspect
 public class AspectV6Advice {
 
-//  @Around("org.example.aop.order.aop.Pointcuts.orderAndService()")
+  //  @Around("org.example.aop.order.aop.Pointcuts.orderAndService()")
   public Object doTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
 
     try {
